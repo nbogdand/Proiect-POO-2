@@ -8,7 +8,7 @@ public:
 	Person* findByCNP(std::string);
 	Person* findByFullName(std::string, std::string);
 };
-
+/*
 Person* PersonRepository::findByCNP(std::string CNP) {
 
 	// Go through whole vector of Persons and 
@@ -41,4 +41,5 @@ Person* PersonRepository::findByFullName(std::string lastName, std::string first
 
 }
 
+*/
 

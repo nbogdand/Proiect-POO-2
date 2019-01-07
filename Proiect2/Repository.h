@@ -18,10 +18,18 @@ public:
 	}
 
 	void print() {
+
+		if(mEntities.size() == 0){
+			std::cout << "Momentan nu exista nicio persoana in memorie.";
+		}
+
 		for (int i = 0; i < mEntities.size(); i++)
-			std::cout << mEntities[i] << " ";
+			std::cout << *mEntities[i] << " ";
 	}
 
+	std::vector<Entity*> getAllEntities() {
+		return mEntities;
+	}
 	
 protected:
 	std::vector<Entity*> mEntities;

@@ -15,6 +15,7 @@
 #include "PersonRepository.h"
 #include "ActivityRepository.h"
 #include "Register.h"
+#include "Menu.h"
 
 int main()
 {
@@ -182,6 +183,11 @@ int main()
 		std::cout << grades[i]->getDiscipline()->getName() << " " << grades[i]->getGrade() << std::endl;
 
 
+	Menu* menu = new Menu;
+	menu->start();
+
+
+	return 0;
 
 }
 

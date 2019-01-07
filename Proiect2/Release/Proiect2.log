@@ -1,7 +1,13 @@
-﻿  StudentRole.cpp
+﻿  Menu.cpp
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(96): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(180): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\repository.h(26): warning C4018: '<': signed/unsigned mismatch
+  c:\users\nbogd\c++workspace\proiect2\proiect2\repository.h(20): note: while compiling class template member function 'void Repository<Person>::print(void)'
+  c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(53): note: see reference to function template instantiation 'void Repository<Person>::print(void)' being compiled
+  c:\users\nbogd\c++workspace\proiect2\proiect2\personrepository.h(6): note: see reference to class template instantiation 'Repository<Person>' being compiled
   Generating code
-  7 of 390 functions ( 1.8%) were compiled, the rest were copied from previous compilation.
+  14 of 475 functions ( 2.9%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    26 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Proiect2.vcxproj -> C:\Users\nbogd\C++Workspace\Proiect2\Release\Proiect2.exe

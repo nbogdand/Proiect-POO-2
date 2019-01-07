@@ -5,11 +5,11 @@
 class ActivityRepository : public Repository<Activity> {
 
 public:
-	std::vector<Activity*> findActivitiesByOwner(Person*);
-	std::vector<Activity*> findActivitiesByRoom(Room*);
+//	std::vector<Activity*> findActivitiesByOwner(Person*);
+//	std::vector<Activity*> findActivitiesByRoom(Room*);
 
 };
-
+/*
 std::vector<Activity*> ActivityRepository::findActivitiesByOwner(Person* owner) {
 
 	std::vector<Activity*> activities;
@@ -42,4 +42,4 @@ std::vector<Activity*> ActivityRepository::findActivitiesByRoom(Room* room) {
 
 	return activities;
 }
-
+*/

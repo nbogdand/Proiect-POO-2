@@ -4,7 +4,7 @@
 
 class RoomRepository : public Repository<Room>{
 public:
-
+/*
 	Room* findByName(std::string roomName) {
 		for (int i = 0; i < mEntities.size(); i++) {
 			if (mEntities[i]->getName() == roomName)
@@ -13,6 +13,6 @@ public:
 
 		return NULL;
 	};
-
+*/
 
 };
