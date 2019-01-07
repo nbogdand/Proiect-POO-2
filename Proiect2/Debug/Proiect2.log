@@ -1,0 +1,6 @@
+﻿  Proiect2.cpp
+c:\users\nbogd\c++workspace\proiect2\proiect2\repository.h(24): warning C4018: '<': signed/unsigned mismatch
+  c:\users\nbogd\c++workspace\proiect2\proiect2\repository.h(23): note: while compiling class template member function 'void Repository<Room>::print(void)'
+  c:\users\nbogd\c++workspace\proiect2\proiect2\proiect2.cpp(66): note: see reference to function template instantiation 'void Repository<Room>::print(void)' being compiled
+  c:\users\nbogd\c++workspace\proiect2\proiect2\roomrepository.h(5): note: see reference to class template instantiation 'Repository<Room>' being compiled
+  Proiect2.vcxproj -> C:\Users\nbogd\C++Workspace\Proiect2\Debug\Proiect2.exe
