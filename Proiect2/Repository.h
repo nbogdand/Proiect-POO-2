@@ -20,7 +20,7 @@ public:
 	void print() {
 
 		if(mEntities.size() == 0){
-			std::cout << "Momentan nu exista nicio persoana in memorie.";
+			std::cout << "Momentan nu exista nicio entitate in memorie.";
 		}
 
 		for (int i = 0; i < mEntities.size(); i++)

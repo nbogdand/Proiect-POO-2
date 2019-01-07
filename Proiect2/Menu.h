@@ -13,6 +13,12 @@ public:
 	void editPerson();
 	void deletePerson();
 
+	void listAllRooms();
+	void addRoom();
+	void editRoom();
+	void deleteRoom();
+
+
 private:
 
 	PersonRepository* mPersonRepository;

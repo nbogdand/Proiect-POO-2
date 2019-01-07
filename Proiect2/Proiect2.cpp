@@ -123,6 +123,7 @@ int main()
 	std::cout << grades[2]->getDiscipline()->getName() << " " << grades[2]->getGrade() << std::endl;
 	*/
 
+/*
 	Person* supreme = new Person("Alex","Alexandrescu","1234567");
 	Room* sala1 = new Room("Sala 1");
 	Room* sala2 = new Room("Sala 2");
@@ -182,6 +183,7 @@ int main()
 	for (int i = 0; i < grades.size(); i++)
 		std::cout << grades[i]->getDiscipline()->getName() << " " << grades[i]->getGrade() << std::endl;
 
+	*/
 
 	Menu* menu = new Menu;
 	menu->start();

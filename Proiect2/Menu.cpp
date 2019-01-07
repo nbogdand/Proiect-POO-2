@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Menu.h"
 #include <string>
+#include <stdio.h>
 
 Menu::Menu()
 {
@@ -10,14 +11,21 @@ Menu::Menu()
 }
 
 void Menu::start() {
-	std::cout << "\n\n Hello, user ! \n\n";
-	std::cout << "Please, choose an action : \n";
-	std::cout << "0) Exit \n";
-	std::cout << "1) List all persons \n";
-	std::cout << "2) Add a person \n";
-	std::cout << "3) Edit a person \n";
-	std::cout << "4) Delete a person \n";
+	std::cout << "\n\n Salut! \n\n";
+	std::cout << "Alegeti, ceea ce doriti: \n";
+	std::cout << "0) Iesire \n";
+	std::cout << "1) Afiseaza toate persoanele \n";
+	std::cout << "2) Adauga o persoana \n";
+	std::cout << "3) Editeaza o persoana \n";
+	std::cout << "4) Sterge o persoana \n";
+
+	std::cout << "\n";
 	
+	std::cout << "5) Afiseaza toate salile \n";
+	std::cout << "6) Adauga o sala \n";
+	std::cout << "7) Editeaza o sala \n";
+	std::cout << "8) Sterge o sala \n";
+
 	std::cout << "Your choice : ";
 	
 	int input;
@@ -42,6 +50,22 @@ void Menu::start() {
 		break;
 	case 4:
 		deletePerson();
+		start();
+		break;
+	case 5:
+		listAllRooms();
+		start();
+		break;
+	case 6:
+		addRoom();
+		start();
+		break;
+	case 7:
+		editRoom();
+		start();
+		break;
+	case 8:
+		deleteRoom();
 		start();
 		break;
 	}
@@ -211,4 +235,102 @@ void Menu::deletePerson() {
 
 }
 
+void Menu::listAllRooms() {
+	mRoomRepository->print();
+}
+
+void Menu::addRoom() {
+
+	std::string input;
+	std::cout << "Introduceti numele salii : ";
+	std::cin >> input;
+
+	mRoomRepository->add(new Room(input));
+}
+
+void Menu::editRoom() {
+
+	std::string input;
+	std::cout << "Introduceti numele salii :";
+	std::cin >> input;
+
+	std::vector<Room*> rooms = mRoomRepository->getAllEntities();
+	Room* gasit = NULL;
+
+	for (int i = 0; i < rooms.size(); i++) {
+		if (rooms[i]->getName() == input)
+			gasit = rooms[i];
+	}
+
+	if (gasit == NULL) {
+
+		do {
+			std::cout << "Sala nu a fost gasita. Mai incercati inca o data? [y/n] :";
+			std::cin >> input;
+		} while (input != "y" && input != "n");
+
+		if (input == "y") {
+			editRoom();
+		}
+	}
+	else {
+		
+		std::string choice;
+
+		do {
+			std::cout << "Doriti sa modificati numele salii ?[y/n] : ";
+			std::cin >> choice;
+		} while (choice != "y" && choice != "n");
+		
+		if (choice == "y") {
+			std::cout << "Introduceti numele : ";
+			std::cin >> choice;
+			gasit->setName(choice);
+		}
+
+	}
+
+
+}
+
+void Menu::deleteRoom() {
+
+	std::string input;
+	std::cout << "Introduceti numele salii :";
+	std::cin >> input;
+
+	std::vector<Room*> rooms = mRoomRepository->getAllEntities();
+	Room* gasit = NULL;
+
+	for (int i = 0; i < rooms.size(); i++) {
+		if (rooms[i]->getName() == input)
+			gasit = rooms[i];
+	}
+
+	if (gasit == NULL) {
+
+		do {
+			std::cout << "Sala nu a fost gasita. Mai incercati inca o data? [y/n] :";
+			std::cin >> input;
+		} while (input != "y" && input != "n");
+
+		if (input == "y") {
+			editRoom();
+		}
+	}
+	else {
+		std::string input;
+		do {
+			std::cout << " Sunteti sigur ca doriti sa stergeti sala " << gasit->getName() << "?[y/n] : ";
+			std::cin >> input;
+		} while (input != "y" && input != "n");
+
+		if (input == "y") {
+			delete gasit;
+		}
+
+	}
+
+
+}
 
