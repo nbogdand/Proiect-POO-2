@@ -17,6 +17,12 @@ public:
 	void addRoom();
 	void editRoom();
 	void deleteRoom();
+	Room* findRoom(std::string,void (*function)());
+
+	void listAllActivities();
+	void addActivity();
+	void editActivity();
+	void deleteActivity();
 
 
 private:

@@ -26,6 +26,14 @@ void Menu::start() {
 	std::cout << "7) Editeaza o sala \n";
 	std::cout << "8) Sterge o sala \n";
 
+	std::cout << "\n";
+
+	std::cout << "9) Afiseaza toate activitatile \n";
+	std::cout << "10) Adauga o activitate \n";
+	std::cout << "11) Editeaza o activitate \n";
+	std::cout << "12) Sterge o activitate \n";
+
+
 	std::cout << "Your choice : ";
 	
 	int input;
@@ -68,6 +76,23 @@ void Menu::start() {
 		deleteRoom();
 		start();
 		break;
+	case 9:
+		listAllActivities();
+		start();
+		break;
+	case 10:
+		addActivity();
+		start();
+		break;
+	case 11:
+		editActivity();
+		start();
+		break;
+	case 12:
+		deleteActivity();
+		start();
+		break;
+
 	}
 
 }
@@ -272,8 +297,7 @@ void Menu::editRoom() {
 		if (input == "y") {
 			editRoom();
 		}
-	}
-	else {
+	}else {
 		
 		std::string choice;
 
@@ -315,7 +339,7 @@ void Menu::deleteRoom() {
 		} while (input != "y" && input != "n");
 
 		if (input == "y") {
-			editRoom();
+			deleteRoom();
 		}
 	}
 	else {
@@ -333,4 +357,303 @@ void Menu::deleteRoom() {
 
 
 }
+
+Room* Menu::findRoom(std::string input,void (*function)()) {
+
+	std::vector<Room*> rooms = mRoomRepository->getAllEntities();
+	Room* gasit = NULL;
+
+	for (int i = 0; i < rooms.size(); i++) {
+		if (rooms[i]->getName() == input)
+			gasit = rooms[i];
+	}
+
+	if (gasit == NULL) {
+
+		do {
+			std::cout << "Sala nu a fost gasita. Mai incercati inca o data? [y/n] :";
+			std::cin >> input;
+		} while (input != "y" && input != "n");
+
+		if (input == "y") {
+			(*function)();
+		}
+
+		if (input == "n") {
+			return NULL;
+		}
+
+	}
+	else {
+		return gasit;
+	}
+
+
+}
+
+void Menu::listAllActivities() {
+	mActivityRepository->print();
+}
+
+void Menu::addActivity() {
+
+	// For a new activity to be registered it needs:
+	// 1-- a room
+	// 2-- an owner (person)
+	// 3-- a descriptiom (name)
+	Room* theRoom;
+	Person* thePerson;
+	std::string theDescription;
+
+
+	std::string description,input;
+	std::cout << "Introduceti numele activitaty : ";
+	std::cin >> description;
+	std::cout << "Introduceti numele salii : ";
+	std::cin >> input;
+
+	theDescription = description;
+	std::vector<Room*> rooms = mRoomRepository->getAllEntities();
+	Room* gasit = NULL;
+
+	for (int i = 0; i < rooms.size(); i++) {
+		if (rooms[i]->getName() == input)
+			gasit = rooms[i];
+	}
+
+	if (gasit == NULL) {
+
+		do {
+			std::cout << "Sala nu a fost gasita. Mai incercati inca o data? [y/n] :";
+			std::cin >> input;
+		} while (input != "y" && input != "n");
+
+		if (input == "y") {
+			addActivity();
+		}
+	}
+	else {
+
+		theRoom = gasit;
+
+		std::string prenume, nume;
+
+		std::cout << "Introduceti prenumele proprietarului : ";
+		std::cin >> prenume;
+		std::cout << "Introduceti numele proprietarului : ";
+		std::cin >> nume;
+
+		std::vector<Person*> persons = mPersonRepository->getAllEntities();
+		Person* gasitP = NULL;
+
+		// Go through whole vector of Persons and 
+		// find the person with matching full name
+		for (int i = 0; i < persons.size(); i++) {
+
+			//if found 
+			if (persons[i]->getLastName() == nume && persons[i]->getFirstName() == prenume)
+				gasitP = persons[i];
+		}
+
+		if (gasitP == NULL) {
+			std::string input;
+			do {
+				std::cout << "Persoana nu a fost gasita. Mai incercati inca o data? [y/n] :";
+				std::cin >> input;
+			} while (input != "y" && input != "n");
+
+			if (input == "y") {
+				addActivity();
+			}
+
+		}
+		else {
+			thePerson = gasitP;
+			mActivityRepository->add(new Activity(theRoom,thePerson,theDescription));
+
+		}
+
+	}
+
+
+}
+
+void Menu::editActivity() {
+
+	std::string desc;
+
+	std::cout << "Introduceti numele activitatii : ";
+	std::cin >> desc;
+
+	std::vector<Activity*> activities = mActivityRepository->getAllEntities();
+	Activity* gasit = NULL;
+
+	for (int i = 0; i < activities.size(); i++) {
+		if (activities[i]->getDescription() == desc)
+			gasit = activities[i];
+	}
+
+	if (gasit == NULL) {
+		std::string input;
+		do {
+			std::cout << "Activitatea nu a fost gasita. Mai incercati inca o data? [y/n] :";
+			std::cin >> input;
+		} while (input != "y" && input != "n");
+
+		if (input == "y") {
+			editActivity();
+		}
+
+	}
+	else {
+		
+		int ch;
+
+		std::cout << "Alegeti ce doriti sa modificati : \n";
+		std::cout << "1) Sala \n";
+		std::cout << "2) Proprietarul \n ";
+		std::cout << "3) Numele \n";
+		std::cout << "Alegerea dvs: ";
+		std::cin >> ch;
+
+		switch (ch)
+		{
+		case 1: {
+			std::string input;
+			std::cout << "Introduceti numele noii sali :";
+			std::cin >> input;
+
+			std::vector<Room*> rooms = mRoomRepository->getAllEntities();
+			Room* gasitR = NULL;
+
+			for (int i = 0; i < rooms.size(); i++) {
+				if (rooms[i]->getName() == input)
+					gasitR = rooms[i];
+			}
+
+			if (gasitR == NULL) {
+
+				do {
+					std::cout << "Sala nu a fost gasita. Mai incercati inca o data? [y/n] :";
+					std::cin >> input;
+				} while (input != "y" && input != "n");
+
+				if (input == "y") {
+					editActivity();
+				}
+			}
+			else {
+				gasit->setLocation(gasitR);
+
+			}
+			break; 
+		}
+		case 2: {
+
+			// Search if the new person actually exists 
+			// then change the old activity's owner to the new person
+
+			std::string firstName, lastName;
+			std::cout << "Introduceti prenumele noii persoanei: ";
+			std::cin >> firstName;
+			std::cout << "Introduceti numele noii persoanei: ";
+			std::cin >> lastName;
+
+			std::vector<Person*> persons = mPersonRepository->getAllEntities();
+			Person* gasitPers = NULL;
+
+			// Go through whole vector of Persons and 
+			// find the person with matching full name
+			for (int i = 0; i < persons.size(); i++) {
+
+				//if found 
+				if (persons[i]->getLastName() == lastName && persons[i]->getFirstName() == firstName)
+					gasitPers = persons[i];
+			}
+
+			if (gasitPers == NULL) {
+				std::string input;
+				do {
+					std::cout << "Persoana nu a fost gasita. Mai incercati inca o data? [y/n] :";
+					std::cin >> input;
+				} while (input != "y" && input != "n");
+
+				if (input == "y") {
+					editActivity();
+				}
+
+			}
+			else {
+
+				gasit->setOwner(gasitPers);
+
+			}
+			break;
+		}
+		case 3: {
+			std::string nume;
+			std::cout << "Introduceti numele nou : ";
+			std::cin >> nume;
+			gasit->setDescription(nume);
+			break;
+		}
+		}
+
+	}
+
+}
+
+void Menu::deleteActivity() {
+	std::string desc;
+
+	std::cout << "Introduceti numele activitatii : ";
+	std::cin >> desc;
+
+	std::vector<Activity*> activities = mActivityRepository->getAllEntities();
+	Activity* gasit = NULL;
+
+	for (int i = 0; i < activities.size(); i++) {
+		if (activities[i]->getDescription() == desc)
+			gasit = activities[i];
+	}
+
+	if (gasit == NULL) {
+		std::string input;
+		do {
+			std::cout << "Activitatea nu a fost gasita. Mai incercati inca o data? [y/n] :";
+			std::cin >> input;
+		} while (input != "y" && input != "n");
+
+		if (input == "y") {
+			deleteActivity();
+		}
+
+	}
+	else {
+		std::string input;
+		do {
+			std::cout << " Sunteti sigur ca doriti sa stergeti activitatea " << gasit->getDescription() << "?[y/n] : ";
+			std::cin >> input;
+		} while (input != "y" && input != "n");
+
+		if (input == "y") {
+			delete gasit;
+		}
+
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -15,7 +15,7 @@ public:
 	std::string getDescription();
 	void setDescription(std::string);
 
-	friend std::ostream& operator << (std::ostream& out, Activity*);
+	friend std::ostream& operator << (std::ostream& out, Activity&);
 
 protected:
 	Room* mLocation;

@@ -1,15 +1,22 @@
 ﻿  Menu.cpp
-c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(120): warning C4018: '<': signed/unsigned mismatch
-c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(204): warning C4018: '<': signed/unsigned mismatch
-c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(260): warning C4018: '<': signed/unsigned mismatch
-c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(305): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(145): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(229): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(285): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(329): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(366): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(419): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(451): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(491): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(529): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(567): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(615): warning C4018: '<': signed/unsigned mismatch
 c:\users\nbogd\c++workspace\proiect2\proiect2\repository.h(26): warning C4018: '<': signed/unsigned mismatch
-  c:\users\nbogd\c++workspace\proiect2\proiect2\repository.h(20): note: while compiling class template member function 'void Repository<Room>::print(void)'
-  c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(239): note: see reference to function template instantiation 'void Repository<Room>::print(void)' being compiled
-  c:\users\nbogd\c++workspace\proiect2\proiect2\roomrepository.h(5): note: see reference to class template instantiation 'Repository<Room>' being compiled
+  c:\users\nbogd\c++workspace\proiect2\proiect2\repository.h(20): note: while compiling class template member function 'void Repository<Activity>::print(void)'
+  c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(395): note: see reference to function template instantiation 'void Repository<Activity>::print(void)' being compiled
+  c:\users\nbogd\c++workspace\proiect2\proiect2\activityrepository.h(5): note: see reference to class template instantiation 'Repository<Activity>' being compiled
   Generating code
-  5 of 422 functions ( 1.2%) were compiled, the rest were copied from previous compilation.
+  2 of 481 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    2 functions had inline decision re-evaluated but remain unchanged
+    1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Proiect2.vcxproj -> C:\Users\nbogd\C++Workspace\Proiect2\Release\Proiect2.exe

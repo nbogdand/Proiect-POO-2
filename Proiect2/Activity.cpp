@@ -39,10 +39,10 @@ void Activity::setDescription(std::string description)
 	mDescription = description;
 }
 
-std::ostream & operator<<(std::ostream & out, Activity * activity)
+std::ostream & operator<<(std::ostream & out, Activity & activity)
 {
 	
-	out << activity->getDescription();
+	out << activity.mDescription << " " << (activity.mLocation)->getName() << " " << *activity.mOwner ;
 
 	return out;
 }
