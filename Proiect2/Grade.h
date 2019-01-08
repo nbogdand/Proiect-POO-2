@@ -14,6 +14,8 @@ public :
 	Discipline* getDiscipline();
 	void setDiscipline(Discipline*);
 
+	friend std::ostream& operator << (std::ostream&, Grade&);
+
 private:
 	float mGrade;
 	Discipline* mDiscipline;

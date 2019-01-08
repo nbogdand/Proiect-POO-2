@@ -32,3 +32,10 @@ Discipline* Grade::getDiscipline() {
 void Grade::setDiscipline(Discipline* discipline) {
 	mDiscipline = discipline;
 }
+
+std::ostream & operator<<(std::ostream &out, Grade &ob)
+{
+
+	out << ob.mDiscipline->getName() << " " << ob.mGrade<< " ";
+	return out;
+}

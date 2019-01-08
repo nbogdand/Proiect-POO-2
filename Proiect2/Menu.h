@@ -3,12 +3,14 @@
 #include "RoomRepository.h"
 #include "ActivityRepository.h"
 #include "DisciplineRepository.h"
+#include "Register.h"
 
 class Menu {
 public:
 
 	Menu();
 	void start();
+
 	void listAllPersons();
 	void addPerson();
 	void editPerson();
@@ -30,11 +32,21 @@ public:
 	void editDiscipline();
 	void deleteDiscipline();
 
+	void RegisterMenu();
+
+	void addStudentToRegister();
+	void addGradeToStudent();
+	void listAllStudents();
+
+	
 private:
 
 	PersonRepository* mPersonRepository;
 	RoomRepository* mRoomRepository;
 	ActivityRepository* mActivityRepository;
 	DisciplineRepository* mDisciplineRepository;
+
+	Register* mRegister = Register::instance();
+
 
 };

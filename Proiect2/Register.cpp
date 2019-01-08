@@ -55,6 +55,36 @@ std::vector<Grade*> Register::getStudentGradesByFullName(std::string firstName, 
 	// return std::vector<Grade*>();
 }
 
+void Register::listAllStudents()
+{
+
+	if (mStudents.size() == 0) {
+		std::cout << "Momentan nu este inregistrat niciun student.";
+	}
+
+	for (int i = 0; i < mStudents.size(); i++) {
+		std::cout << "  " <<i+1<<"."<< *mStudents[i] << " ";
+
+		std::vector<Grade*> grades = Register::getStudentGradesByFullName(mStudents[i]->getFirstName(), mStudents[i]->getLastName());
+
+		if (grades.size() != 0) {
+
+			for (int j = 0; j < grades.size(); j++) {
+				std::cout << *grades[j] << " ";
+			}
+
+		}
+
+		std::cout << "\n";
+
+	}
+}
+
+std::vector<Person*> Register::getStudents()
+{
+	return mStudents;
+}
+
 
 
 

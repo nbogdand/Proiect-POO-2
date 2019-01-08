@@ -10,6 +10,8 @@ public:
 	static Register* instance();
 	static void addStudent(Person*);
 	static std::vector<Grade*> getStudentGradesByFullName(std::string,std::string);
+	static void listAllStudents();
+	static std::vector<Person*> getStudents();
 
 private:
 	Register() {};

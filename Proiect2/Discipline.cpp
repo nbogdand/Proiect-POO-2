@@ -21,7 +21,7 @@ void Discipline::setName(std::string disciplineName) {
 
 std::vector<Activity*> Discipline::getAllActivities()
 {
-	return std::vector<Activity*>();
+	return mActivities;
 }
 
 void Discipline::addActivity(Activity *act)

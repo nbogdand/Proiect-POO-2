@@ -1,27 +1,36 @@
 ﻿  Menu.cpp
-c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(171): warning C4018: '<': signed/unsigned mismatch
-c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(255): warning C4018: '<': signed/unsigned mismatch
-c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(311): warning C4018: '<': signed/unsigned mismatch
-c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(355): warning C4018: '<': signed/unsigned mismatch
-c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(392): warning C4018: '<': signed/unsigned mismatch
-c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(445): warning C4018: '<': signed/unsigned mismatch
-c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(477): warning C4018: '<': signed/unsigned mismatch
-c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(517): warning C4018: '<': signed/unsigned mismatch
-c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(555): warning C4018: '<': signed/unsigned mismatch
-c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(593): warning C4018: '<': signed/unsigned mismatch
-c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(641): warning C4018: '<': signed/unsigned mismatch
-c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(691): warning C4018: '<': signed/unsigned mismatch
-c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(728): warning C4018: '<': signed/unsigned mismatch
-c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(774): warning C4018: '<': signed/unsigned mismatch
-c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(807): warning C4018: '<': signed/unsigned mismatch
-c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(848): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(180): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(264): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(320): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(364): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(401): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(454): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(486): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(526): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(564): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(602): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(650): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(700): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(737): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(783): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(816): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(857): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(935): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(975): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(1003): warning C4018: '<': signed/unsigned mismatch
 c:\users\nbogd\c++workspace\proiect2\proiect2\repository.h(26): warning C4018: '<': signed/unsigned mismatch
   c:\users\nbogd\c++workspace\proiect2\proiect2\repository.h(20): note: while compiling class template member function 'void Repository<Discipline>::print(void)'
-  c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(674): note: see reference to function template instantiation 'void Repository<Discipline>::print(void)' being compiled
+  c:\users\nbogd\c++workspace\proiect2\proiect2\menu.cpp(683): note: see reference to function template instantiation 'void Repository<Discipline>::print(void)' being compiled
   c:\users\nbogd\c++workspace\proiect2\proiect2\disciplinerepository.h(5): note: see reference to class template instantiation 'Repository<Discipline>' being compiled
+  Register.cpp
+c:\users\nbogd\c++workspace\proiect2\proiect2\register.cpp(25): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\register.cpp(36): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\register.cpp(44): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\register.cpp(65): warning C4018: '<': signed/unsigned mismatch
+c:\users\nbogd\c++workspace\proiect2\proiect2\register.cpp(72): warning C4018: '<': signed/unsigned mismatch
   Generating code
-  6 of 582 functions ( 1.0%) were compiled, the rest were copied from previous compilation.
-    3 functions were new in current compilation
-    26 functions had inline decision re-evaluated but remain unchanged
+  4 of 656 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Proiect2.vcxproj -> C:\Users\nbogd\C++Workspace\Proiect2\Release\Proiect2.exe

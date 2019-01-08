@@ -2,6 +2,7 @@
 #include "Menu.h"
 #include <string>
 #include <stdio.h>
+#include "StudentRole.h"
 
 Menu::Menu()
 {
@@ -44,7 +45,11 @@ void Menu::start() {
 	std::cout << "15) Editeaza o disciplina \n";
 	std::cout << "16) Sterge o disciplina \n";
 
-	std::cout << "Your choice : ";
+	std::cout << "\n";
+
+	std::cout << "17) Meniu Catalog \n";
+
+	std::cout << "Alegerea dvs : ";
 	
 	int input;
 
@@ -116,6 +121,10 @@ void Menu::start() {
 		break;
 	case 16:
 		deleteDiscipline();
+		start();
+		break;
+	case 17:
+		RegisterMenu();
 		start();
 		break;
 
@@ -875,6 +884,158 @@ void Menu::deleteDiscipline() {
 
 	}
 
+
+}
+
+void Menu::RegisterMenu() {
+
+	int choice;
+
+	std::cout << "\n \n Catalog \n";
+	std::cout << "Alegeti o actiune : \n";
+	std::cout << "0)Inapoi \n";
+	std::cout << "1)Adauga student \n";
+	std::cout << "2)Adauga nota \n";
+	std::cout << "3)Afiseaza toti studentii \n";
+
+	std::cout << "Alegerea dvs. : ";
+	std::cin >> choice;
+
+	switch (choice) {
+	case 1: {
+		addStudentToRegister();
+		RegisterMenu();
+		break;
+	}
+	case 2: {
+		addGradeToStudent();
+		RegisterMenu();
+		break;
+	}
+	case 3: {
+		listAllStudents();
+		RegisterMenu();
+		break;
+	}
+	}
+}
+
+void Menu::addStudentToRegister() {
+	std::string firstName, lastName;
+	std::cout << "Introduceti prenumele persoanei: ";
+	std::cin >> firstName;
+	std::cout << "Introduceti numele persoanei: ";
+	std::cin >> lastName;
+
+	std::vector<Person*> persons = mPersonRepository->getAllEntities();
+	Person* gasit = NULL;
+
+	// Go through whole vector of Persons and 
+	// find the person with matching full name
+	for (int i = 0; i < persons.size(); i++) {
+
+		//if found 
+		if (persons[i]->getLastName() == lastName && persons[i]->getFirstName() == firstName)
+			gasit = persons[i];
+	}
+
+	if (gasit == NULL) {
+		std::string input;
+		do {
+			std::cout << "Persoana nu a fost gasita. Mai incercati inca o data? [y/n] :";
+			std::cin >> input;
+		} while (input != "y" && input != "n");
+
+		if (input == "y") {
+			addStudentToRegister();
+		}
+
+	}
+	else {
+
+		gasit->addRole(Role::STUDENT_ROLE);
+		mRegister->addStudent(gasit);
+	}
+	
+}
+
+void Menu::addGradeToStudent() {
+
+	std::string firstName, lastName;
+	std::cout << "Introduceti prenumele persoanei: ";
+	std::cin >> firstName;
+	std::cout << "Introduceti numele persoanei: ";
+	std::cin >> lastName;
+
+	std::vector<Person*> persons = mRegister->getStudents();
+	Person* gasit = NULL;
+
+	// Go through whole vector of Persons and 
+	// find the person with matching full name
+	for (int i = 0; i < persons.size(); i++) {
+
+		//if found 
+		if (persons[i]->getLastName() == lastName && persons[i]->getFirstName() == firstName)
+			gasit = persons[i];
+	}
+
+	if (gasit == NULL) {
+		std::string input;
+		do {
+			std::cout << "Persoana nu a fost gasita. Mai incercati inca o data? [y/n] :";
+			std::cin >> input;
+		} while (input != "y" && input != "n");
+
+		if (input == "y") {
+			addGradeToStudent();
+		}
+
+	}
+	else {
+		std::string discname;
+
+		std::cout << "Introduceti numele disciplinei : ";
+		std::cin >> discname;
+
+		std::vector<Discipline*> disciplines = mDisciplineRepository->getAllEntities();
+		Discipline* gasitD = NULL;
+
+		for (int i = 0; i < disciplines.size(); i++) {
+			if (disciplines[i]->getName() == discname)
+				gasitD = disciplines[i];
+		}
+
+		if (gasitD == NULL) {
+			std::string input;
+			do {
+				std::cout << "Disciplina nu a fost gasita. Mai incercati inca o data? [y/n] :";
+				std::cin >> input;
+			} while (input != "y" && input != "n");
+
+			if (input == "y") {
+				addGradeToStudent();
+			}
+
+		}
+		else {
+			float nota;
+			std::cout << "Introduceti nota : ";
+			std::cin >> nota;
+			
+			StudentRole* sr = static_cast<StudentRole*>(gasit->getRoles().at(0));
+			sr->addGrade(new Grade(nota, gasitD));
+
+
+		}
+
+	}
+
+
+}
+
+void Menu::listAllStudents() {
+
+	mRegister->listAllStudents();
 
 }
 
