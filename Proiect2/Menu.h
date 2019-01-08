@@ -2,6 +2,7 @@
 #include "PersonRepository.h"
 #include "RoomRepository.h"
 #include "ActivityRepository.h"
+#include "DisciplineRepository.h"
 
 class Menu {
 public:
@@ -24,11 +25,16 @@ public:
 	void editActivity();
 	void deleteActivity();
 
+	void listAllDisciplines();
+	void addDiscipline();
+	void editDiscipline();
+	void deleteDiscipline();
 
 private:
 
 	PersonRepository* mPersonRepository;
 	RoomRepository* mRoomRepository;
 	ActivityRepository* mActivityRepository;
+	DisciplineRepository* mDisciplineRepository;
 
 };

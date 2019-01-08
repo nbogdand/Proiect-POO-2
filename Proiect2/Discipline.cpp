@@ -19,3 +19,30 @@ void Discipline::setName(std::string disciplineName) {
 	mName = disciplineName;
 }
 
+std::vector<Activity*> Discipline::getAllActivities()
+{
+	return std::vector<Activity*>();
+}
+
+void Discipline::addActivity(Activity *act)
+{
+	mActivities.push_back(act);
+}
+
+void Discipline::removeActivity(std::string name)
+{
+	for (int i = 0; i < mActivities.size(); i++) {
+		if (mActivities[i]->getDescription() == name)
+			mActivities.erase(mActivities.begin() + i);
+	}
+}
+
+std::ostream & operator<<(std::ostream & out, Discipline &ob)
+{
+	out << ob.mName << " ";
+	for (int i = 0; i < ob.mActivities.size(); i++) {
+		out << *(ob.mActivities[i]) << " ";
+	}
+
+	return out;
+}

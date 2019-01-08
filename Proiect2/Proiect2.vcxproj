@@ -157,6 +157,7 @@
     <ClInclude Include="AdministratorRole.h" />
     <ClInclude Include="Course.h" />
     <ClInclude Include="Discipline.h" />
+    <ClInclude Include="DisciplineRepository.h" />
     <ClInclude Include="Grade.h" />
     <ClInclude Include="GuestRole.h" />
     <ClInclude Include="Header.h" />

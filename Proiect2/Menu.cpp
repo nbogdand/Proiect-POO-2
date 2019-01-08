@@ -8,12 +8,16 @@ Menu::Menu()
 	mPersonRepository = new PersonRepository();
 	mRoomRepository = new RoomRepository();
 	mActivityRepository = new ActivityRepository();
+	mDisciplineRepository = new DisciplineRepository();
 }
 
 void Menu::start() {
 	std::cout << "\n\n Salut! \n\n";
 	std::cout << "Alegeti, ceea ce doriti: \n";
 	std::cout << "0) Iesire \n";
+
+	std::cout << "\n";
+
 	std::cout << "1) Afiseaza toate persoanele \n";
 	std::cout << "2) Adauga o persoana \n";
 	std::cout << "3) Editeaza o persoana \n";
@@ -33,6 +37,12 @@ void Menu::start() {
 	std::cout << "11) Editeaza o activitate \n";
 	std::cout << "12) Sterge o activitate \n";
 
+	std::cout << "\n";
+
+	std::cout << "13) Afiseaza toate disciplinele \n";
+	std::cout << "14) Adauga o disciplina \n";
+	std::cout << "15) Editeaza o disciplina \n";
+	std::cout << "16) Sterge o disciplina \n";
 
 	std::cout << "Your choice : ";
 	
@@ -90,6 +100,22 @@ void Menu::start() {
 		break;
 	case 12:
 		deleteActivity();
+		start();
+		break;
+	case 13:
+		listAllDisciplines();
+		start();
+		break;
+	case 14:
+		addDiscipline();
+		start();
+		break;
+	case 15:
+		editDiscipline();
+		start();
+		break;
+	case 16:
+		deleteDiscipline();
 		start();
 		break;
 
@@ -643,12 +669,214 @@ void Menu::deleteActivity() {
 	}
 }
 
+void Menu::listAllDisciplines() {
+	
+	mDisciplineRepository->print();
+
+}
+
+void Menu::addDiscipline() {
+
+	std::string discname,actname;
+
+	std::cout << "Introduceti numele disciplinei : ";
+	std::cin >> discname;
+
+	std::cout << "Introduceti numele activitatii : ";
+	std::cin >> actname;
+
+	std::vector<Activity*> activities = mActivityRepository->getAllEntities();
+	Activity* gasit = NULL;
+
+	for (int i = 0; i < activities.size(); i++) {
+		if (activities[i]->getDescription() == actname)
+			gasit = activities[i];
+	}
+
+	if (gasit == NULL) {
+		std::string input;
+		do {
+			std::cout << "Activitatea nu a fost gasita. Mai incercati inca o data? [y/n] :";
+			std::cin >> input;
+		} while (input != "y" && input != "n");
+
+		if (input == "y") {
+			addDiscipline();
+		}
+
+	}
+	else {
+		Discipline * newDiscipline = new Discipline(discname);
+		newDiscipline->addActivity(gasit);
+		mDisciplineRepository->add(newDiscipline);
+	}
 
 
 
+}
+
+void Menu::editDiscipline() {
+
+	std::string discname;
+	
+	std::cout << "Introduceti numele disciplinei : ";
+	std::cin >> discname;
+
+	std::vector<Discipline*> disciplines = mDisciplineRepository->getAllEntities();
+	Discipline* gasit = NULL;
+
+	for (int i = 0; i < disciplines.size(); i++) {
+		if (disciplines[i]->getName() == discname)
+			gasit = disciplines[i];
+	}
+
+	if (gasit == NULL) {
+		std::string input;
+		do {
+			std::cout << "Disciplina nu a fost gasita. Mai incercati inca o data? [y/n] :";
+			std::cin >> input;
+		} while (input != "y" && input != "n");
+
+		if (input == "y") {
+			editDiscipline();
+		}
+
+	}
+	else {
+
+		int choice;
+
+		std::cout << " Alegeti ce doriti sa modificati : \n";
+		std::cout << " 1)Numele disciplinei \n";
+		std::cout << " 2)Adauga activitate \n";
+		std::cout << " 3)Elimina activitate \n";
+		
+		std::cin >> choice;
+
+		switch (choice)
+		{
+		case 1: {
+			std::string numeNou;
+			std::cout << "Introduceti noul nume : ";
+			std::cin >> numeNou;
+			break; 
+		}
+		case 2: {
+
+			std::string desc;
+
+			std::cout << "Introduceti numele activitatii : ";
+			std::cin >> desc;
+
+			std::vector<Activity*> activities = mActivityRepository->getAllEntities();
+			Activity* gasitAct = NULL;
+
+			for (int i = 0; i < activities.size(); i++) {
+				if (activities[i]->getDescription() == desc)
+					gasitAct = activities[i];
+			}
+
+			if (gasitAct == NULL) {
+				std::string input;
+				do {
+					std::cout << "Activitatea nu a fost gasita. Mai incercati inca o data? [y/n] :";
+					std::cin >> input;
+				} while (input != "y" && input != "n");
+
+				if (input == "y") {
+					editDiscipline();
+				}
+
+			}
+			else {
+
+				gasit->addActivity(gasitAct);
+
+			}
+
+			break;
+		}
+		case 3: {
+			std::string actRemoveName;
+			std::cout << "Introduceti numele activitatii pentru eliminare ";
+			std::cin >> actRemoveName;
+
+			std::vector<Activity*> discActivities = gasit->getAllActivities();
+			Activity *gasitDiscAct = NULL;
+
+			for (int i = 0; i < discActivities.size(); i++) {
+				if (discActivities[i]->getDescription() == actRemoveName)
+					gasitDiscAct = discActivities[i];
+			}
+
+			if (gasitDiscAct == NULL) {
+				std::string input;
+				do {
+					std::cout << "Activitatea nu a fost gasita. Mai incercati inca o data? [y/n] :";
+					std::cin >> input;
+				} while (input != "y" && input != "n");
+
+				if (input == "y") {
+					editDiscipline();
+				}
+
+			}
+			else
+			{
+				gasit->removeActivity(actRemoveName);
+			}
+
+			break;
+		}
+		}
 
 
+	}
 
+}
+
+
+void Menu::deleteDiscipline() {
+	std::string discname;
+
+	std::cout << "Introduceti numele disciplinei : ";
+	std::cin >> discname;
+
+	std::vector<Discipline*> disciplines = mDisciplineRepository->getAllEntities();
+	Discipline* gasit = NULL;
+
+	for (int i = 0; i < disciplines.size(); i++) {
+		if (disciplines[i]->getName() == discname)
+			gasit = disciplines[i];
+	}
+
+	if (gasit == NULL) {
+		std::string input;
+		do {
+			std::cout << "Disciplina nu a fost gasita. Mai incercati inca o data? [y/n] :";
+			std::cin >> input;
+		} while (input != "y" && input != "n");
+
+		if (input == "y") {
+			deleteDiscipline();
+		}
+
+	}
+	else {
+		std::string input;
+		do {
+			std::cout << " Sunteti sigur ca doriti sa stergeti disciplina " << gasit->getName() << "?[y/n] : ";
+			std::cin >> input;
+		} while (input != "y" && input != "n");
+
+		if (input == "y") {
+			delete gasit;
+		}
+
+	}
+
+
+}
 
 
 
